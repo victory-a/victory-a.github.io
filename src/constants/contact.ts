@@ -4,11 +4,11 @@ export interface SocialLink {
 }
 
 export const contactContent = {
-  pretitle: 'Contact',
-  lead: 'Get in touch.',
+  pretitle: 'Get in touch',
+  lead: 'Let\'s build something.',
   email: 'victoryasokomeh@gmail.com',
-  cvLabel: 'Download CV',
-  cvHref: '/Victory-Asokomeh-CV.pdf',
+  cvLabel: 'Resume',
+  cvHref: 'https://drive.google.com/file/d/1vPfNElo7M-mewZJ7V9o43kLcdCsrWGrr/view',
   social: [
     {
       label: 'LinkedIn',

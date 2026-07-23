@@ -27,7 +27,6 @@ const content = contactContent
         <a
           class="btn btn--medium contact-cv"
           :href="content.cvHref"
-          download
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -58,9 +57,10 @@ const content = contactContent
 
 .contact-row {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--vspace-2);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gutter);
+  flex-wrap: wrap;
 }
 
 .contact-meta {
@@ -75,6 +75,10 @@ const content = contactContent
 .contact-social {
   font-size: var(--text-md);
   margin: 0;
+}
+
+.contact-cv {
+  flex-shrink: 0;
 }
 
 .contact-links a,

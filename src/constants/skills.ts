@@ -5,15 +5,15 @@ export interface SkillGroup {
 
 export const skillsContent = {
   pretitle: 'Skills',
-  intro: 'Frontend-first toolkit. Comfortable across the stack when the work calls for it.',
+  intro: 'Frontend engineer, comfortable working across the stack',
   groups: [
     {
       title: 'Languages',
-      items: ['JavaScript (ES6+)', 'TypeScript'],
+      items: ['JavaScript', 'TypeScript'],
     },
     {
       title: 'Frontend',
-      items: ['React', 'Next.js', 'React-Native', 'HTML', 'CSS', 'Tailwind', 'SCSS'],
+      items: ['React', 'Next.js', 'React Native', 'HTML', 'CSS', 'Tailwind CSS', 'SCSS'],
     },
     {
       title: 'Backend',
@@ -29,7 +29,7 @@ export const skillsContent = {
     },
     {
       title: 'Cloud & Tools',
-      items: ['AWS', 'Git'],
+      items: ['AWS', 'Docker'],
     },
   ] as SkillGroup[],
 };

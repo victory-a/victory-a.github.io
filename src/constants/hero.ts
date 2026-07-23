@@ -19,12 +19,12 @@ function buildSrcSet(publicId: string, format: 'webp' | 'png'): string {
 }
 
 export const heroContent = {
-  pretitle: "Hello, I'm Victory",
-  title: 'Software engineer.',
+  pretitle: "Hi, I'm Victory",
+  title: 'Frontend Engineer',
   summary:
-    'I build digital products that solve real business problems and create intuitive experiences people enjoy using. With 6+ years of experience across fintech, telecom, and e-commerce, I help turn ideas into reliable, scalable products that deliver measurable business value.',
-  cvLabel: 'Download CV',
-  cvHref: '/Victory-Asokomeh-CV.pdf',
+    'I\'m passionate about building products that excite customers and deliver measurable business value. With 6+ years of experience across fintech, telecomms, and energy sector. ',
+  cvLabel: 'Resume',
+  cvHref: 'https://drive.google.com/file/d/1vPfNElo7M-mewZJ7V9o43kLcdCsrWGrr/view',
   image: {
     alt: 'Portrait of Victory Asokomeh',
     width: 440,

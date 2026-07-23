@@ -37,7 +37,6 @@ onMounted(() => {
         <a
           class="btn btn--medium"
           :href="content.cvHref"
-          download
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -110,7 +109,7 @@ onMounted(() => {
 }
 
 .intro-title {
-  font-size: clamp(4rem, 5.5vw, 8rem);
+  font-size: clamp(3.2rem, 4.5vw, 6.4rem);
   line-height: 1.1;
   margin: 0 0 var(--vspace-1_5);
   color: var(--color-text-dark);
@@ -226,7 +225,7 @@ onMounted(() => {
 
 @media (max-width: 600px) {
   .intro-title {
-    font-size: clamp(3.2rem, 9vw, 5.6rem);
+    font-size: clamp(2.8rem, 8vw, 4.6rem);
   }
 }
 </style>
