@@ -65,15 +65,15 @@ const { handleClick } = useSmoothScroll()
   justify-content: center;
   width: calc(1.5 * var(--space));
   height: calc(1.5 * var(--space));
-  border: 1px solid var(--color-1);
+  border: 1px solid var(--color-white);
   background: var(--color-body);
-  color: var(--color-1);
+  color: var(--color-white);
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .ss-go-top a:hover {
-  background: var(--color-1);
-  border-color: var(--color-1);
+  background: var(--color-white);
+  border-color: var(--color-white);
   color: var(--color-black);
 }
 

@@ -31,8 +31,8 @@ onMounted(() => {
   >
     <div class="container intro-inner">
       <div class="intro-text">
-        <div class="intro-pretitle text-pretitle">{{ content.pretitle }}</div>
         <h1 class="intro-title">{{ content.title }}</h1>
+        <div class="intro-role text-pretitle">{{ content.role }}</div>
         <p class="intro-summary">{{ content.summary }}</p>
         <a
           class="btn btn--medium"
@@ -101,19 +101,20 @@ onMounted(() => {
   max-width: 56rem;
 }
 
-.intro-pretitle {
-  display: inline-block;
-  color: var(--color-1);
-  opacity: 0;
-  margin-bottom: var(--vspace-1);
-}
-
 .intro-title {
   font-size: clamp(3.2rem, 4.5vw, 6.4rem);
   line-height: 1.1;
-  margin: 0 0 var(--vspace-1_5);
+  margin: 0 0 0.2rem;
   color: var(--color-text-dark);
   opacity: 0;
+}
+
+.intro-role {
+  display: inline-block;
+  color: var(--color-1);
+  opacity: 0;
+  margin: 0 0 var(--vspace-1_5);
+  text-transform: capitalize;
 }
 
 .intro-summary {
@@ -143,9 +144,11 @@ onMounted(() => {
 }
 
 .intro-media img {
-  aspect-ratio: 2 / 2.5;
+  aspect-ratio: 2 / 2.25;
   object-fit: cover;
   object-position: center top;
+  border: none;
+  outline: 0.5px solid color-mix(in srgb, var(--color-1) 55%, transparent);
   box-shadow: 0 60px 40px -40px rgba(0, 0, 0, 0.2);
   filter: grayscale(0%);
   transition: filter 0.35s ease;
@@ -157,7 +160,7 @@ onMounted(() => {
   filter: grayscale(100%);
 }
 
-.is-shown .intro-pretitle,
+.is-shown .intro-role,
 .is-shown .intro-title,
 .is-shown .intro-summary,
 .is-shown .intro-text .btn,
@@ -170,11 +173,11 @@ onMounted(() => {
   animation-delay: 1.1s;
 }
 
-.is-shown .intro-pretitle {
+.is-shown .intro-title {
   animation-delay: 0.5s;
 }
 
-.is-shown .intro-title {
+.is-shown .intro-role {
   animation-delay: 0.65s;
 }
 

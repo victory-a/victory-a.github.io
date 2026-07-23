@@ -19,16 +19,16 @@ function buildSrcSet(publicId: string, format: 'webp' | 'png'): string {
 }
 
 export const heroContent = {
-  pretitle: "Hi, I'm Victory",
-  title: 'Frontend Engineer',
+  title: 'Victory Asokomeh',
+  role: 'Frontend engineer',
   summary:
-    'I\'m passionate about building products that excite customers and deliver measurable business value. With 6+ years of experience across fintech, telecomms, and energy sector. ',
+    "Hi, I'm Victory, a software engineer based in Nigeria, building products for users around the world. I enjoy creating digital experiences that solve real problems and deliver measurable value. With over 6 years of experience across fintech, telecom, and consulting, I thrive at the intersection of product, design, and engineering, turning complex ideas into simple, scalable solutions.",
   cvLabel: 'Resume',
   cvHref: 'https://drive.google.com/file/d/1vPfNElo7M-mewZJ7V9o43kLcdCsrWGrr/view',
   image: {
     alt: 'Portrait of Victory Asokomeh',
     width: 440,
-    height: 550,
+    height: 495,
     sizes: '(max-width: 900px) min(70vw, 36rem), min(44rem, 40vw)',
     webpSrcset: buildSrcSet(HERO_WEBP_ID, 'webp'),
     fallbackSrcset: buildSrcSet(HERO_FALLBACK_ID, 'png'),

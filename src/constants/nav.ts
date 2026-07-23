@@ -6,7 +6,7 @@ export interface NavLink {
 export const navContent = {
   brand: 'VA',
   links: [
-    { label: 'Home', href: '#intro' },
+    { label: 'About', href: '#intro' },
     { label: 'Experience', href: '#expertise' },
     { label: 'Skills', href: '#skills' },
     { label: 'Contact', href: '#contact' },
