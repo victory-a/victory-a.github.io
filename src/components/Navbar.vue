@@ -6,10 +6,17 @@ import { useSmoothScroll } from '../composables/useSmoothScroll'
 
 const menuOpen = ref(false)
 const { activeId } = useScrollSpy(sectionIds)
-const { handleClick } = useSmoothScroll(() => {
+const { handleClick: onSmoothScrollClick } = useSmoothScroll(() => {
   menuOpen.value = false
   document.body.classList.remove('menu-is-open')
 })
+
+const handleClick = (event: MouseEvent) => {
+  const link = (event.target as HTMLElement | null)?.closest('a.smoothscroll')
+  if (!link) return
+  onSmoothScrollClick(event)
+  event.stopPropagation()
+}
 
 const brand = computed(() => navContent.brand)
 const links = computed(() => navContent.links)

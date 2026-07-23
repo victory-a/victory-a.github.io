@@ -6,10 +6,13 @@ import Skills from './components/Skills.vue'
 import Expertise from './components/Expertise.vue'
 import Contact from './components/Contact.vue'
 import Footer from './components/Footer.vue'
+import { useSmoothScroll } from './composables/useSmoothScroll'
+
+const { handleClick } = useSmoothScroll()
 </script>
 
 <template>
-  <div id="top" class="pagewrap">
+  <div id="top" class="pagewrap" @click="handleClick">
     <Circles />
     <Navbar />
     <main class="s-content">

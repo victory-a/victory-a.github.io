@@ -34,13 +34,8 @@ onMounted(() => {
         <h1 class="intro-title">{{ content.title }}</h1>
         <div class="intro-role text-pretitle">{{ content.role }}</div>
         <p class="intro-summary">{{ content.summary }}</p>
-        <a
-          class="btn btn--medium"
-          :href="content.cvHref"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {{ content.cvLabel }}
+        <a class="btn btn--medium smoothscroll" :href="content.ctaHref">
+          {{ content.ctaLabel }}
         </a>
       </div>
 
@@ -107,6 +102,7 @@ onMounted(() => {
   margin: 0 0 0.2rem;
   color: var(--color-text-dark);
   opacity: 0;
+  text-transform: capitalize;
 }
 
 .intro-role {
@@ -114,7 +110,6 @@ onMounted(() => {
   color: var(--color-1);
   opacity: 0;
   margin: 0 0 var(--vspace-1_5);
-  text-transform: capitalize;
 }
 
 .intro-summary {

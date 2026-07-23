@@ -10,28 +10,17 @@ const content = contactContent
       <h2 class="text-pretitle">{{ content.pretitle }}</h2>
       <p class="h1 contact-lead">{{ content.lead }}</p>
 
-      <div class="contact-row">
-        <div class="contact-meta">
-          <p class="contact-links">
-            <a :href="`mailto:${content.email}`">{{ content.email }}</a>
-          </p>
-          <ul class="contact-social">
-            <li v-for="item in content.social" :key="item.label">
-              <a :href="item.href" target="_blank" rel="noopener noreferrer">
-                {{ item.label }}
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <a
-          class="btn btn--medium contact-cv"
-          :href="content.cvHref"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {{ content.cvLabel }}
-        </a>
+      <div class="contact-meta">
+        <p class="contact-links">
+          <a :href="`mailto:${content.email}`">{{ content.email }}</a>
+        </p>
+        <ul class="contact-social">
+          <li v-for="item in content.social" :key="item.label">
+            <a :href="item.href" target="_blank" rel="noopener noreferrer">
+              {{ item.label }}
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
@@ -47,56 +36,45 @@ const content = contactContent
 
 .s-contact .text-pretitle {
   color: var(--color-1);
+  margin-bottom: var(--vspace-1_5);
 }
 
 .contact-lead {
   max-width: 90rem;
   margin-bottom: var(--vspace-2);
-  color: var(--color-text-dark);
-}
-
-.contact-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--gutter);
-  flex-wrap: wrap;
+  color: var(--color-text-light);
 }
 
 .contact-meta {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 0.4rem 1.6rem;
+  justify-content: space-between;
+  gap: 0.8rem var(--gutter);
   min-width: 0;
 }
 
-.contact-links,
-.contact-social {
+.contact-links {
   font-size: var(--text-md);
   margin: 0;
 }
 
-.contact-cv {
-  flex-shrink: 0;
+.contact-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85em 1.2em;
+  font-size: var(--text-md);
+  margin: 0;
 }
 
 .contact-links a,
 .contact-social a {
-  color: var(--color-text-light);
+  color: var(--color-text-dark);
 }
 
 .contact-links a:hover,
 .contact-social a:hover {
   color: var(--color-1);
-}
-
-.contact-social li {
-  display: inline;
-}
-
-.contact-social li:not(:last-child)::after {
-  content: ', ';
-  color: var(--color-text-light);
 }
 </style>

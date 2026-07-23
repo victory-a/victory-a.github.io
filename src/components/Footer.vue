@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { footerContent } from '../constants/footer'
-import { useSmoothScroll } from '../composables/useSmoothScroll'
 
 const content = footerContent
 const year = new Date().getFullYear()
-const { handleClick } = useSmoothScroll()
 </script>
 
 <template>
-  <footer class="s-footer" @click="handleClick">
+  <footer class="s-footer">
     <div class="container footer-inner">
       <p class="ss-copyright">© Copyright {{ content.name }} {{ year }}</p>
 

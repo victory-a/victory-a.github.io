@@ -20,11 +20,11 @@ function buildSrcSet(publicId: string, format: 'webp' | 'png'): string {
 
 export const heroContent = {
   title: 'Victory Asokomeh',
-  role: 'Frontend engineer',
+  role: 'Software engineer',
   summary:
-    "Hi, I'm Victory, a software engineer based in Nigeria, building products for users around the world. I enjoy creating digital experiences that solve real problems and deliver measurable value. With over 6 years of experience across fintech, telecom, and consulting, I thrive at the intersection of product, design, and engineering, turning complex ideas into simple, scalable solutions.",
-  cvLabel: 'Resume',
-  cvHref: 'https://drive.google.com/file/d/1vPfNElo7M-mewZJ7V9o43kLcdCsrWGrr/view',
+    "Hi, I'm Victory. I'm the kind of engineer who notices both the loading time and the misaligned button. I enjoy combining engineering with a keen eye for design to build products that look great, feel effortless to use, and are reliable enough to support millions of users.",
+  ctaLabel: 'Get in touch',
+  ctaHref: '#contact',
   image: {
     alt: 'Portrait of Victory Asokomeh',
     width: 440,

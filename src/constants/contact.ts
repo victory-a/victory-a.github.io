@@ -5,10 +5,8 @@ export interface SocialLink {
 
 export const contactContent = {
   pretitle: 'Get in touch',
-  lead: 'Let\'s build something.',
+  lead: "Let's build something.",
   email: 'victoryasokomeh@gmail.com',
-  cvLabel: 'Resume',
-  cvHref: 'https://drive.google.com/file/d/1vPfNElo7M-mewZJ7V9o43kLcdCsrWGrr/view',
   social: [
     {
       label: 'LinkedIn',
@@ -16,5 +14,9 @@ export const contactContent = {
     },
     { label: 'GitHub', href: 'https://github.com/victory-a' },
     { label: 'Blog', href: 'https://soks.hashnode.dev/' },
+    {
+      label: 'Resume',
+      href: 'https://drive.google.com/file/d/1vPfNElo7M-mewZJ7V9o43kLcdCsrWGrr/view',
+    },
   ] as SocialLink[],
 }
