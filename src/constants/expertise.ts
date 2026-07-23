@@ -92,7 +92,7 @@ export const expertiseContent = {
       timeframe: 'March 2020 — November 2020',
       companyAbout: 'A software development company that specializes in building custom solutions in the energy sector.',
       achievements: [
-        "Delivered the first release of the company's in-house products and client websites.",
+        "Delivered the first release of the company's in-house and client products.",
         'Improved the speed and reliability of key customer experiences.',
         'Ensured every project was secure and production-ready before launch.',
       ],
