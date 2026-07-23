@@ -17,10 +17,10 @@ export const expertiseContent = {
   experience: [
     {
       title: 'FairMoney',
-      meta: 'Software Engineer · Remote',
+      meta: 'Software Engineer · Remote (Global)',
       timeframe: 'August 2023 — Present',
       url: 'https://fairmoney.io/',
-      companyAbout: "FairMoney is one of Africa's leading digital banks, providing loans, payments, and banking services to millions of customers.",
+      companyAbout: "FairMoney is a leading digital bank operating across Africa and India, providing loans, payments, and banking services to millions of customers.",
       achievements: [
         'Built and scaled a payments platform serving 500+ merchants while reducing request handling time by more than 40% through a new CRM.',
         "Integrated an AI-powered fraud detection system to improve the platform's security and reduce fraud.",
@@ -29,7 +29,7 @@ export const expertiseContent = {
     },
     {
       title: 'Prodevs',
-      meta: 'Frontend Engineer · Remote',
+      meta: 'Frontend Engineer · Remote, Nigeria',
       timeframe: 'January 2023 — August 2023',
       url: 'https://www.prodevs.io/',
       companyAbout: 'A software development company that specializes in staff augmentation and custom software development.',
@@ -41,7 +41,7 @@ export const expertiseContent = {
     },
     {
       title: 'Telnyx',
-      meta: 'Software Engineer · Remote (USA)',
+      meta: 'Software Engineer · Remote (Global)',
       timeframe: 'January 2022 — July 2022',
       url: 'https://telnyx.com/',
       companyAbout: 'Telnyx is a global cloud communications platform serving thousands of businesses across 140+ countries.',
@@ -53,7 +53,7 @@ export const expertiseContent = {
     },
     {
       title: 'Squad by Guaranty Trust Bank',
-      meta: 'Frontend Engineer · Lagos',
+      meta: 'Frontend Engineer · Lagos, Nigeria',
       timeframe: 'March 2021 — January 2022',
       url: 'https://squadco.com/',
       companyAbout:
@@ -65,7 +65,7 @@ export const expertiseContent = {
     },
     {
       title: 'Josla Electric',
-      meta: 'Software Engineer · Lagos',
+      meta: 'Software Engineer · Lagos, Nigeria',
       timeframe: 'March 2020 — November 2020',
       companyAbout: 'A software development company that specializes in building custom solutions in the energy sector.',
       achievements: [
