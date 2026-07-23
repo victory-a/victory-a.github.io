@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+:root {
+  --font-1: "Public Sans", sans-serif;
+  --font-2: "DM Serif Display", serif;
+
+  --color-1: #eabe7c;
+  --color-2: #23967f;
+  --color-1-darker: hsla(36, 72%, 50%, 1);
+
+  --color-black: #000000;
+  --color-gray-10: #141516;
+  --color-gray-9: #2c2c2d;
+  --color-gray-7: #5b5b5c;
+  --color-gray-4: #a1a1a2;
+  --color-white: #ffffff;
+
+  --color-text: var(--color-gray-4);
+  --color-text-dark: var(--color-white);
+  --color-text-light: var(--color-gray-7);
+  --color-body: var(--color-gray-10);
+  --color-border: rgba(255, 255, 255, 0.05);
+
+  --color-btn: var(--color-gray-9);
+  --color-btn-text: var(--color-1);
+  --color-btn-hover: var(--color-white);
+  --color-btn-hover-text: var(--color-black);
+
+  --base-size: 62.5%;
+  --multiplier: 1;
+  --base-font-size: calc(1.9rem * var(--multiplier));
+  --space: calc(3.2rem * var(--multiplier));
+  --vspace-0_5: calc(0.5 * var(--space));
+  --vspace-0_75: calc(0.75 * var(--space));
+  --vspace-1: var(--space);
+  --vspace-1_5: calc(1.5 * var(--space));
+  --vspace-2: calc(2 * var(--space));
+  --vspace-3: calc(3 * var(--space));
+  --vspace-4: calc(4 * var(--space));
+  --vspace-5: calc(5 * var(--space));
+  --vspace-6: calc(6 * var(--space));
+
+  --text-xs: calc(1.32rem * var(--multiplier));
+  --text-sm: calc(1.58rem * var(--multiplier));
+  --text-md: calc(2.28rem * var(--multiplier));
+  --text-lg: calc(2.74rem * var(--multiplier));
+  --text-xl: calc(3.28rem * var(--multiplier));
+  --text-xxl: calc(3.94rem * var(--multiplier));
+  --text-display: calc(5.67rem * var(--multiplier));
+
+  --header-height: 6.4rem;
+  --gutter: 2.4rem;
+  --container-width: 120rem;
+  --circle-width: 70vw;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --multiplier: 0.875;
+  }
+}
