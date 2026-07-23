@@ -1,15 +1,29 @@
+export type AchievementLink = {
+  text: string;
+  href: string;
+};
+
+/** Plain string, or mixed text + link segments */
+export type Achievement = string | Array<string | AchievementLink>;
+
 export interface TimelineItem {
   title: string;
   meta: string;
   timeframe: string;
-  /** Optional company website — enables link + arrow on the title */
+  /** Optional company website — enables link on the title */
   url?: string;
   /** Optional 1–2 lines about what the company does */
   companyAbout?: string;
   /** Role achievements — shown as bullet points when present */
-  achievements?: string[];
+  achievements?: Achievement[];
   /** Single-paragraph description (e.g. education) */
   description?: string;
+}
+
+export function isAchievementLink(
+  segment: string | AchievementLink,
+): segment is AchievementLink {
+  return typeof segment === 'object' && 'href' in segment;
 }
 
 export const expertiseContent = {
@@ -20,11 +34,12 @@ export const expertiseContent = {
       meta: 'Software Engineer · Remote (Global)',
       timeframe: 'August 2023 — Present',
       url: 'https://fairmoney.io/',
-      companyAbout: "FairMoney is a leading digital bank operating across Africa and India, providing loans, payments, and banking services to millions of customers.",
+      companyAbout:
+        'FairMoney is a leading digital bank operating across Africa and India, providing loans, payments, and banking services to millions of customers.',
       achievements: [
         'Built and scaled a payments platform serving 500+ merchants while reducing request handling time by more than 40% through a new CRM.',
-        "Integrated an AI-powered fraud detection system to improve the platform's security and reduce fraud.",
-        "Mentored engineers junior engineers, helping improve the team's efficiency and productivity.",
+        'Delivered an AI-powered fraud detection system, that improved payment security and helped safeguard merchants and customers from fraud.',
+        'Supported the growth of junior engineers through mentoring, code reviews, and day-to-day collaboration.',
       ],
     },
     {
@@ -35,8 +50,8 @@ export const expertiseContent = {
       companyAbout: 'A software development company that specializes in staff augmentation and custom software development.',
       achievements: [
         'Built an enterprise printing platform that reduced manual work and helped teams work more efficiently.',
-        'Improved the performance of a legacy enterprise application by up to 50%.',
-        "Collaborated closely with the team to deliver new features, and strengthened the platform's reliability and security before launch.",
+        "Collaborated with cross-functional teams to deliver new features while improving the platform's reliability, security, and production readiness.",
+        'Improved the performance of a legacy enterprise application by up to 50%, enabling users to complete key tasks significantly faster.',
       ],
     },
     {
@@ -46,9 +61,9 @@ export const expertiseContent = {
       url: 'https://telnyx.com/',
       companyAbout: 'Telnyx is a global cloud communications platform serving thousands of businesses across 140+ countries.',
       achievements: [
-        'Reduced the time taken to onboard new customers by 50% by streamlining the onboarding process.',
+        'Reduced the time taken to onboard new customers by 35% by streamlining the onboarding process.',
+        'Automated the processs of generating price quotes for new customers, thereby saving the pricing team several hours weekly.',
         'Mentored junior engineers and improved the speed of key customer workflows.',
-        'Strengthened the security of customer accounts and provisioning systems.',
       ],
     },
     {
@@ -59,8 +74,16 @@ export const expertiseContent = {
       companyAbout:
         'Squad is a fintech subsidiary of Guaranty Trust Bank (GTBank), a leading African financial institution, powering digital payments for businesses.',
       achievements: [
-        "Led and mentored a team of frontend engineers in building Squad's payment gateway and its first merchant storefront, which processed over ₦1 million in its first month.",
-        "Squad has since grown into HabariPay's developer platform, processing over ₦80.9 trillion in transactions in 2025.",
+        "Led and mentored a team of frontend engineers in building Squad's payment gateway and its first merchant storefront, which processed a significant volume of transactions in its first month.",
+        "Defined the frontend team's engineering standards, creating a consistent and maintainable foundation for future development.",
+        [
+          'Squad has since grown significantly, processing over ',
+          {
+            text: '$5.8 billion',
+            href: 'https://squadco.com/impact-report/',
+          },
+          ' in transactions in 2025.',
+        ],
       ],
     },
     {

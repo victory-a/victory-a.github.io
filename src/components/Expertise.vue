@@ -1,7 +1,15 @@
 <script setup lang="ts">
-import { expertiseContent } from '../constants/expertise'
+import {
+  expertiseContent,
+  isAchievementLink,
+  type Achievement,
+} from '../constants/expertise'
 
 const content = expertiseContent
+
+function achievementSegments(achievement: Achievement) {
+  return typeof achievement === 'string' ? [achievement] : achievement
+}
 </script>
 
 <template>
@@ -39,7 +47,21 @@ const content = expertiseContent
                 </p>
                 <ul v-if="item.achievements?.length" class="timeline__achievements">
                   <li v-for="(achievement, index) in item.achievements" :key="index">
-                    {{ achievement }}
+                    <template
+                      v-for="(segment, segmentIndex) in achievementSegments(achievement)"
+                      :key="segmentIndex"
+                    >
+                      <a
+                        v-if="isAchievementLink(segment)"
+                        class="timeline__inline-link"
+                        :href="segment.href"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {{ segment.text }}
+                      </a>
+                      <template v-else>{{ segment }}</template>
+                    </template>
                   </li>
                 </ul>
               </div>
@@ -214,5 +236,19 @@ const content = expertiseContent
   height: 5px;
   border-radius: 50%;
   background: var(--color-1);
+}
+
+.timeline__inline-link {
+  color: var(--color-1);
+  text-decoration: none;
+  transition: text-decoration-color 0.25s ease;
+}
+
+.timeline__inline-link:hover,
+.timeline__inline-link:focus {
+  color: var(--color-1);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
 }
 </style>
