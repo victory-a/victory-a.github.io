@@ -20,7 +20,7 @@ function buildSrcSet(publicId: string, format: 'webp' | 'png'): string {
 
 export const heroContent = {
   title: 'Victory Asokomeh',
-  role: 'Software engineer',
+  role: 'Frontend engineer',
   summary:
     "Hi, I'm Victory. I'm the kind of engineer who notices both the loading time and the misaligned button. I enjoy combining engineering with a keen eye for design to build products that are intuitive, beautifully crafted, and built to perform at scale.",
   ctaLabel: 'Get in touch',
