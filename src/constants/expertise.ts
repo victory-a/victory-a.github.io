@@ -20,9 +20,7 @@ export interface TimelineItem {
   description?: string;
 }
 
-export function isAchievementLink(
-  segment: string | AchievementLink,
-): segment is AchievementLink {
+export function isAchievementLink(segment: string | AchievementLink): segment is AchievementLink {
   return typeof segment === 'object' && 'href' in segment;
 }
 
@@ -63,7 +61,7 @@ export const expertiseContent = {
       achievements: [
         'Reduced the time taken to onboard new customers by 35% by streamlining the onboarding process.',
         'Automated the processs of generating price quotes for new customers, thereby saving the pricing team several hours weekly.',
-        'Mentored junior engineers and improved the speed of key customer workflows.',
+        'Mentored junior engineers, helping them grow their skills while raising the overall level of the team.',
       ],
     },
     {

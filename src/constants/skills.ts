@@ -17,7 +17,7 @@ export const skillsContent = {
     },
     {
       title: 'Backend',
-      items: ['Node.js', 'Express.js', 'Prisma', 'MongoDB', 'PostgreSQL', 'GCP'],
+      items: ['Node.js', 'Express.js', 'Prisma', 'MongoDB', 'PostgreSQL'],
     },
     {
       title: 'Testing',
