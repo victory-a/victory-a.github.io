@@ -47,7 +47,7 @@ const content = skillsContent
 
 .skills-intro {
   margin: 0 0 var(--vspace-2);
-  color: var(--color-text-light);
+  color: var(--color-white);
 }
 
 .skills-grid {

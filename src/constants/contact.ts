@@ -5,7 +5,7 @@ export interface SocialLink {
 
 export const contactContent = {
   pretitle: 'Get in touch',
-  lead: "Let's build something.",
+  lead: "Let's build something together",
   email: 'victoryasokomeh@gmail.com',
   social: [
     {

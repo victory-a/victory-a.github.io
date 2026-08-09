@@ -42,7 +42,7 @@ const content = contactContent
 .contact-lead {
   max-width: 90rem;
   margin-bottom: var(--vspace-2);
-  color: var(--color-text-light);
+  color: var(--color-white);
 }
 
 .contact-meta {
