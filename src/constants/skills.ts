@@ -5,7 +5,7 @@ export interface SkillGroup {
 
 export const skillsContent = {
   pretitle: 'Skills',
-  intro: 'Frontend engineer, comfortable working across the stack',
+  intro: 'Software engineer, comfortable working across the stack',
   groups: [
     {
       title: 'Languages',
