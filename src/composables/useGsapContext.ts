@@ -30,8 +30,6 @@ export function useGsapContext(
           scale: 1,
         },
       )
-      // Ensure ambient rings remain faintly visible without motion
-      gsap.set(el.querySelectorAll(':scope > span'), { opacity: 0.1 })
       return
     }
 

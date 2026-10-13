@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import Circles from './components/Circles.vue'
 import Navbar from './components/Navbar.vue'
 import Hero from './components/Hero.vue'
 import Skills from './components/Skills.vue'
@@ -25,9 +24,9 @@ onMounted(() => {
 </script>
 
 <template>
+  <!-- Nav sits outside .pagewrap so overflow:hidden doesn't kill backdrop-filter -->
+  <Navbar />
   <div id="top" class="pagewrap" @click="handleClick">
-    <Circles />
-    <Navbar />
     <main class="s-content">
       <Hero />
       <Expertise />

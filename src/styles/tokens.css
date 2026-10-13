@@ -48,10 +48,9 @@
   --text-xxl: calc(3.94rem * var(--multiplier));
   --text-display: calc(5.67rem * var(--multiplier));
 
-  --header-height: 6.4rem;
+  --header-height: 8rem;
   --gutter: 2.4rem;
   --container-width: 120rem;
-  --circle-width: 70vw;
 }
 
 @media (max-width: 600px) {
