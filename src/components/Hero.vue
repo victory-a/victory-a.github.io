@@ -1,46 +1,80 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
+import gsap from 'gsap'
 import { heroContent } from '../constants/hero'
-import { usePrefersReducedMotion } from '../composables/usePrefersReducedMotion'
+import { useGsapContext } from '../composables/useGsapContext'
+import { motion } from '../motion/tokens'
 
 const content = heroContent
-const shown = ref(false)
 const muted = ref(false)
-const prefersReduced = usePrefersReducedMotion()
+const root = ref<HTMLElement | null>(null)
 
 const toggleMuted = () => {
   muted.value = !muted.value
 }
 
-onMounted(() => {
-  if (prefersReduced.value) {
-    shown.value = true
-    return
-  }
-  requestAnimationFrame(() => {
-    shown.value = true
+useGsapContext(root, () => {
+  const heroItems = gsap.utils.toArray<HTMLElement>('[data-hero]')
+  const media = root.value?.querySelector<HTMLElement>('[data-hero-media]')
+
+  gsap.set(heroItems, {
+    opacity: 0,
+    y: motion.distance.rise,
   })
+  if (media) {
+    gsap.set(media, { opacity: 0, scale: 0.94, y: motion.distance.riseSm })
+  }
+
+  const tl = gsap.timeline({ defaults: { ease: motion.ease.enter } })
+
+  // TSG-style staggered text entrance
+  tl.to(heroItems, {
+    opacity: 1,
+    y: 0,
+    duration: motion.duration.base,
+    stagger: motion.stagger.base,
+  })
+
+  // Zap/TSG media emphasis with expo.out settle
+  if (media) {
+    tl.to(
+      media,
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: motion.duration.slow,
+        ease: motion.ease.emphasis,
+      },
+      '-=0.35',
+    )
+  }
 })
 </script>
 
 <template>
   <section
     id="intro"
+    ref="root"
     class="s-intro target-section"
-    :class="{ 'is-shown': shown }"
   >
     <div class="container intro-inner">
       <div class="intro-text">
-        <h1 class="intro-title">{{ content.title }}</h1>
-        <div class="intro-role text-pretitle">{{ content.role }}</div>
-        <p class="intro-summary">{{ content.summary }}</p>
-        <a class="btn btn--medium smoothscroll" :href="content.ctaHref">
+        <h1 class="intro-title" data-hero>{{ content.title }}</h1>
+        <div class="intro-role text-pretitle" data-hero>{{ content.role }}</div>
+        <p class="intro-summary" data-hero>{{ content.summary }}</p>
+        <a
+          class="btn btn--medium smoothscroll"
+          data-hero
+          :href="content.ctaHref"
+        >
           {{ content.ctaLabel }}
         </a>
       </div>
 
       <div
         class="intro-media"
+        data-hero-media
         :class="{ 'is-muted': muted }"
         role="button"
         tabindex="0"
@@ -101,14 +135,12 @@ onMounted(() => {
   line-height: 1.1;
   margin: 0 0 0.2rem;
   color: var(--color-text-dark);
-  opacity: 0;
   text-transform: capitalize;
 }
 
 .intro-role {
   display: inline-block;
   color: var(--color-1);
-  opacity: 0;
   margin: 0 0 var(--vspace-1_5);
 }
 
@@ -117,18 +149,14 @@ onMounted(() => {
   font-size: calc(2.1rem * var(--multiplier));
   line-height: 1.55;
   color: var(--color-text);
-  opacity: 0;
-}
-
-.intro-text .btn {
-  opacity: 0;
 }
 
 .intro-media {
   justify-self: end;
   width: min(100%, 44rem);
-  opacity: 0;
   cursor: pointer;
+  will-change: transform, opacity;
+  transform-origin: center center;
 }
 
 .intro-media picture,
@@ -153,55 +181,6 @@ onMounted(() => {
 .intro-media:focus-visible img,
 .intro-media.is-muted img {
   filter: grayscale(100%);
-}
-
-.is-shown .intro-role,
-.is-shown .intro-title,
-.is-shown .intro-summary,
-.is-shown .intro-text .btn,
-.is-shown .intro-media {
-  animation: rise-in 0.9s cubic-bezier(0.28, 0.12, 0.22, 1) forwards;
-}
-
-.is-shown .intro-media {
-  animation-name: fade-in;
-  animation-delay: 1.1s;
-}
-
-.is-shown .intro-title {
-  animation-delay: 0.5s;
-}
-
-.is-shown .intro-role {
-  animation-delay: 0.65s;
-}
-
-.is-shown .intro-summary {
-  animation-delay: 0.8s;
-}
-
-.is-shown .intro-text .btn {
-  animation-delay: 0.95s;
-}
-
-@keyframes rise-in {
-  from {
-    opacity: 0;
-    transform: translateY(80px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 @media (max-width: 900px) {

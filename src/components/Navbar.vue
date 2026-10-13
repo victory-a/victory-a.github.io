@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
+import gsap from 'gsap'
 import { navContent, sectionIds } from '../constants/nav'
 import { useScrollSpy } from '../composables/useScrollSpy'
 import { useSmoothScroll } from '../composables/useSmoothScroll'
+import { useGsapContext } from '../composables/useGsapContext'
+import { motion } from '../motion/tokens'
 
 const menuOpen = ref(false)
+const root = ref<HTMLElement | null>(null)
 const { activeId } = useScrollSpy(sectionIds)
 const { handleClick: onSmoothScrollClick } = useSmoothScroll(() => {
   menuOpen.value = false
@@ -33,6 +37,16 @@ const onResize = () => {
   }
 }
 
+useGsapContext(root, () => {
+  gsap.from(root.value, {
+    y: -24,
+    opacity: 0,
+    duration: motion.duration.base,
+    ease: motion.ease.enter,
+    delay: 0.15,
+  })
+})
+
 onMounted(() => {
   window.addEventListener('resize', onResize)
 })
@@ -44,7 +58,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="s-header" @click="handleClick">
+  <header ref="root" class="s-header" @click="handleClick">
     <div class="header-mobile">
       <a class="mobile-home-link smoothscroll" href="#top">{{ brand }}</a>
       <button

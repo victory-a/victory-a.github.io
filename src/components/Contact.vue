@@ -1,16 +1,29 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { contactContent } from '../constants/contact'
+import { useGsapContext } from '../composables/useGsapContext'
+import { revealSection } from '../composables/useReveal'
+import { motion } from '../motion/tokens'
 
 const content = contactContent
+const root = ref<HTMLElement | null>(null)
+
+useGsapContext(root, () => {
+  if (!root.value) return
+  revealSection(root.value, {
+    stagger: motion.stagger.base,
+    y: motion.distance.riseSm,
+  })
+})
 </script>
 
 <template>
-  <section id="contact" class="s-contact target-section">
+  <section id="contact" ref="root" class="s-contact target-section">
     <div class="container">
-      <h2 class="text-pretitle">{{ content.pretitle }}</h2>
-      <p class="h1 contact-lead">{{ content.lead }}</p>
+      <h2 class="text-pretitle" data-reveal>{{ content.pretitle }}</h2>
+      <p class="h1 contact-lead" data-reveal>{{ content.lead }}</p>
 
-      <div class="contact-meta">
+      <div class="contact-meta" data-reveal>
         <p class="contact-links">
           <a :href="`mailto:${content.email}`">{{ content.email }}</a>
         </p>

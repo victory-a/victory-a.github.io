@@ -1,28 +1,43 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import {
   expertiseContent,
   isAchievementLink,
   type Achievement,
 } from '../constants/expertise'
+import { useGsapContext } from '../composables/useGsapContext'
+import { revealSection } from '../composables/useReveal'
+import { motion } from '../motion/tokens'
 
 const content = expertiseContent
+const root = ref<HTMLElement | null>(null)
 
 function achievementSegments(achievement: Achievement) {
   return typeof achievement === 'string' ? [achievement] : achievement
 }
+
+useGsapContext(root, () => {
+  if (!root.value) return
+  revealSection(root.value, {
+    stagger: motion.stagger.loose,
+    y: motion.distance.rise,
+    duration: motion.duration.slow,
+  })
+})
 </script>
 
 <template>
-  <section id="expertise" class="s-expertise target-section">
+  <section id="expertise" ref="root" class="s-expertise target-section">
     <div class="container">
       <div class="expertise-timelines">
         <div class="timeline-group">
-          <h2 class="text-pretitle">{{ content.experienceTitle }}</h2>
+          <h2 class="text-pretitle" data-reveal>{{ content.experienceTitle }}</h2>
           <div class="timeline">
             <div
               v-for="item in content.experience"
               :key="`${item.title}-${item.timeframe}`"
               class="timeline__block"
+              data-reveal
             >
               <div class="timeline__bullet" />
               <div class="timeline__header">
@@ -70,12 +85,13 @@ function achievementSegments(achievement: Achievement) {
         </div>
 
         <div class="timeline-group">
-          <h2 class="text-pretitle">{{ content.educationTitle }}</h2>
+          <h2 class="text-pretitle" data-reveal>{{ content.educationTitle }}</h2>
           <div class="timeline">
             <div
               v-for="item in content.education"
               :key="`${item.title}-${item.timeframe}`"
               class="timeline__block"
+              data-reveal
             >
               <div class="timeline__bullet" />
               <div class="timeline__header">

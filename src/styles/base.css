@@ -138,7 +138,8 @@ button {
 }
 
 @media (min-width: 901px) {
-  html {
+  /* Enable snap only after load so it doesn't nudge scroll on refresh */
+  html.is-snap-ready {
     scroll-snap-type: y mandatory;
     scroll-padding-top: var(--header-height);
   }

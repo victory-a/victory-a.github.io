@@ -1,23 +1,53 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { usePrefersReducedMotion } from '../composables/usePrefersReducedMotion'
+import { ref } from 'vue'
+import gsap from 'gsap'
+import { useGsapContext } from '../composables/useGsapContext'
+import { motion } from '../motion/tokens'
 
-const ready = ref(false)
-const prefersReduced = usePrefersReducedMotion()
+const root = ref<HTMLElement | null>(null)
 
-onMounted(() => {
-  if (prefersReduced.value) {
-    ready.value = true
-    return
-  }
-  requestAnimationFrame(() => {
-    ready.value = true
+useGsapContext(root, () => {
+  const rings = gsap.utils.toArray<HTMLElement>('.circles span')
+
+  // Center via xPercent/yPercent so GSAP scale doesn't fight CSS translate
+  gsap.set(rings, {
+    xPercent: -50,
+    yPercent: -50,
+    left: '50%',
+    top: '50%',
+    opacity: 0,
+    scale: 0.72,
+  })
+
+  gsap.to(rings, {
+    opacity: 0.12,
+    scale: 1,
+    duration: motion.duration.slow,
+    ease: motion.ease.emphasis,
+    stagger: {
+      each: motion.stagger.tight,
+      from: 'end',
+    },
+    delay: 0.35,
+    onComplete: () => {
+      rings.forEach((ring, i) => {
+        gsap.to(ring, {
+          opacity: 0.06 + (i % 2) * 0.04,
+          scale: 1 + 0.018 * (5 - i),
+          duration: motion.duration.ambient + i * 0.35,
+          ease: motion.ease.soft,
+          yoyo: true,
+          repeat: -1,
+          delay: i * 0.2,
+        })
+      })
+    },
   })
 })
 </script>
 
 <template>
-  <div class="circles" :class="{ 'is-ready': ready }" aria-hidden="true">
+  <div ref="root" class="circles" aria-hidden="true">
     <span /><span /><span /><span /><span />
   </div>
 </template>
@@ -40,9 +70,7 @@ onMounted(() => {
   border: 1px solid var(--color-1);
   border-radius: 50%;
   opacity: 0;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
+  will-change: transform, opacity;
 }
 
 .circles span:nth-child(1) {
@@ -64,38 +92,6 @@ onMounted(() => {
 .circles span:nth-child(5) {
   width: 20%;
   height: 20%;
-}
-
-.circles.is-ready span {
-  animation: circle-in 0.9s cubic-bezier(0.28, 0.12, 0.22, 1) forwards;
-}
-
-.circles.is-ready span:nth-child(1) {
-  animation-delay: 0.4s;
-}
-.circles.is-ready span:nth-child(2) {
-  animation-delay: 0.3s;
-}
-.circles.is-ready span:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.circles.is-ready span:nth-child(4) {
-  animation-delay: 0.1s;
-}
-.circles.is-ready span:nth-child(5) {
-  animation-delay: 0s;
-}
-
-@keyframes circle-in {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.3;
-  }
-  100% {
-    opacity: 0.1;
-  }
 }
 
 @media (max-width: 800px) {

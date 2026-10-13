@@ -1,15 +1,28 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { skillsContent } from '../constants/skills'
+import { useGsapContext } from '../composables/useGsapContext'
+import { revealSection } from '../composables/useReveal'
+import { motion } from '../motion/tokens'
 
 const content = skillsContent
+const root = ref<HTMLElement | null>(null)
+
+useGsapContext(root, () => {
+  if (!root.value) return
+  revealSection(root.value, {
+    stagger: motion.stagger.tight,
+    y: motion.distance.riseSm,
+  })
+})
 </script>
 
 <template>
-  <section id="skills" class="s-skills target-section">
+  <section id="skills" ref="root" class="s-skills target-section">
     <div class="container">
       <header class="skills-header">
-        <h2 class="text-pretitle">{{ content.pretitle }}</h2>
-        <p class="h1 skills-intro">{{ content.intro }}</p>
+        <h2 class="text-pretitle" data-reveal>{{ content.pretitle }}</h2>
+        <p class="h1 skills-intro" data-reveal>{{ content.intro }}</p>
       </header>
 
       <div class="skills-grid">
@@ -17,6 +30,7 @@ const content = skillsContent
           v-for="group in content.groups"
           :key="group.title"
           class="skill-group"
+          data-reveal
         >
           <h3 class="skill-group__title text-pretitle">{{ group.title }}</h3>
           <ul class="skill-group__list">
